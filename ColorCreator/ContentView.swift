@@ -82,7 +82,6 @@ struct Color: Hashable {
         hasher.combine(String(red))
         hasher.combine(String(green))
         hasher.combine(String(blue))
-        //print("Color: \(name) with hash value of \(hasher)")
     }
     
     mutating func splitIntoColorParts(rgb: String) {
@@ -157,6 +156,8 @@ struct ContentView : View {
     
     func addColorsToDatabase(_ colors: [Color]) {
         for color in colors {
+            // Annoying XCode issue: Error here "Use of undeclared type" but the
+            // project does compile and run properly
             let colorsTable = Colors(context: self.managedObjectContext)
             colorsTable.red = Int16(color.red)
             colorsTable.green = Int16(color.green)
@@ -177,6 +178,8 @@ struct ContentView : View {
             return Float(y)
         }
         let colorList = NSColorList(name: "X11 Colors")
+        // Annoying XCode issue: Error here "Use of undeclared type" but the
+        // project does compile and run properly
         let colorsFetchRequest = NSFetchRequest<Colors>(entityName: "Colors")
         do {
             let fetchedColors = try managedObjectContext.fetch(colorsFetchRequest)
@@ -189,8 +192,6 @@ struct ContentView : View {
                 let g = roundTo3(color.green)
                 let b = roundTo3(color.blue)
                 colorList.setColor(NSColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: CGFloat(1.0)), forKey: color.name ?? "Missing Name")
-                
-                //colorList.setColor(NSColor(red: CGFloat(color.red)/255.0, green: CGFloat(color.green)/255.0, blue: CGFloat(color.blue)/255.0, alpha: CGFloat(1.0)), forKey: color.name ?? "Missing Name")
             }
             // And write the file
             do {
@@ -209,6 +210,8 @@ struct ContentView : View {
     }
     
     func deleteColorsDatabase() {
+        // Annoying XCode issue: Error here "Use of undeclared type" but the
+        // project does compile and run properly
         let colorsFetchRequest = NSFetchRequest<Colors>(entityName: "Colors")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: colorsFetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         do {
@@ -229,7 +232,6 @@ struct ContentView : View {
     
     var body: some View {
         VStack {
-            
             if selectedURL != nil {
                 Text("Selected: \(selectedURL!.absoluteString)")
             } else {
