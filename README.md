@@ -9,3 +9,6 @@ The _real_ reason is because I needed a quicky project to test insert/read/delet
 Disclaimer: To simplify everything, I kept all the code in `ContentView.swift` when really everything would be broken out (I also have a number of extensions that would normally go into their own files).
 
 TL;DR: I wanted a project to learn Core Data better, and figured I'd get a color picker out of it. It's not well structured, but gets the point across. Feel free to take what you want from it.
+
+## Warning!
+This only works in Catalina or later; trying to compile it under Mojave, even with the latest XCode version, will result in a lot of errors around SwiftUI components.
